@@ -1,0 +1,505 @@
+{
+  "version": 1,
+  "updatedAt": 1793933224022,
+  "products": [
+    {
+      "id": "p1",
+      "name": "Protector Solar Facial FPS 50 Toque Seco 50 ml",
+      "brand": "",
+      "cat": "sol-y-agua",
+      "price": 26990,
+      "discount": 30,
+      "branches": [
+        "farmavida",
+        "libertad",
+        "central"
+      ],
+      "image": "",
+      "featured": true,
+      "inStock": true,
+      "active": true,
+      "art": "tube",
+      "color": "#f5b54a"
+    },
+    {
+      "id": "p2",
+      "name": "Sérum Facial Ácido Hialurónico + Vitamina C 30 ml",
+      "brand": "",
+      "cat": "faciales",
+      "price": 29900,
+      "discount": 25,
+      "branches": [
+        "farmavida",
+        "libertad",
+        "central"
+      ],
+      "image": "",
+      "featured": true,
+      "inStock": true,
+      "active": true,
+      "art": "dropper",
+      "color": "#e8a87c"
+    },
+    {
+      "id": "p3",
+      "name": "Pañales Premium Talle G x 36",
+      "brand": "",
+      "cat": "bebes",
+      "price": 28900,
+      "discount": 15,
+      "branches": [
+        "farmavida",
+        "libertad",
+        "central"
+      ],
+      "image": "",
+      "featured": true,
+      "inStock": true,
+      "active": true,
+      "art": "box",
+      "color": "#9fd3f0"
+    },
+    {
+      "id": "p4",
+      "name": "Set de Bloques Didácticos x 60 piezas",
+      "brand": "",
+      "cat": "juguetes",
+      "price": 27900,
+      "discount": 15,
+      "branches": [
+        "farmavida"
+      ],
+      "image": "",
+      "featured": true,
+      "inStock": true,
+      "active": true,
+      "art": "toy",
+      "color": "#f08a7e"
+    },
+    {
+      "id": "p5",
+      "name": "Whey Protein 1 kg Vainilla",
+      "brand": "Star Nutrition",
+      "cat": "gym",
+      "price": 45800,
+      "discount": 15,
+      "branches": [
+        "farmavida",
+        "central"
+      ],
+      "image": "",
+      "featured": true,
+      "inStock": true,
+      "active": true,
+      "art": "jar",
+      "color": "#3bb49c"
+    },
+    {
+      "id": "p6",
+      "name": "Whey Protein 2 lb Chocolate",
+      "brand": "Gentech",
+      "cat": "gym",
+      "price": 42500,
+      "discount": 12,
+      "branches": [
+        "libertad",
+        "farmavida"
+      ],
+      "image": "",
+      "featured": true,
+      "inStock": true,
+      "active": true,
+      "art": "jar",
+      "color": "#8a5a44"
+    },
+    {
+      "id": "p7",
+      "name": "Gel Limpiador Facial Piel Grasa 200 ml",
+      "brand": "",
+      "cat": "faciales",
+      "price": 17900,
+      "discount": 20,
+      "branches": [
+        "farmavida",
+        "libertad",
+        "central"
+      ],
+      "image": "",
+      "featured": false,
+      "inStock": true,
+      "active": true,
+      "art": "pump",
+      "color": "#7fb6d9"
+    },
+    {
+      "id": "p8",
+      "name": "Crema Hidratante Facial Piel Sensible 50 ml",
+      "brand": "",
+      "cat": "faciales",
+      "price": 24900,
+      "discount": 20,
+      "branches": [
+        "farmavida",
+        "central"
+      ],
+      "image": "",
+      "featured": false,
+      "inStock": true,
+      "active": true,
+      "art": "jar",
+      "color": "#c9b6e4"
+    },
+    {
+      "id": "p9",
+      "name": "Agua Micelar Desmaquillante 400 ml",
+      "brand": "",
+      "cat": "faciales",
+      "price": 14900,
+      "discount": 20,
+      "branches": [
+        "farmavida",
+        "libertad",
+        "central"
+      ],
+      "image": "",
+      "featured": false,
+      "inStock": true,
+      "active": true,
+      "art": "bottle",
+      "color": "#8fd0e8"
+    },
+    {
+      "id": "p10",
+      "name": "Base de Maquillaje Fluida Larga Duración 30 ml",
+      "brand": "",
+      "cat": "maquillaje",
+      "price": 20900,
+      "discount": 20,
+      "branches": [
+        "farmavida",
+        "libertad",
+        "central"
+      ],
+      "image": "",
+      "featured": false,
+      "inStock": true,
+      "active": true,
+      "art": "dropper",
+      "color": "#d9a585"
+    },
+    {
+      "id": "p11",
+      "name": "Paleta de Sombras Tonos Nude · 12 colores",
+      "brand": "",
+      "cat": "maquillaje",
+      "price": 16500,
+      "discount": 20,
+      "branches": [
+        "farmavida",
+        "libertad"
+      ],
+      "image": "",
+      "featured": false,
+      "inStock": true,
+      "active": true,
+      "art": "compact",
+      "color": "#c98b7a"
+    },
+    {
+      "id": "p12",
+      "name": "Máscara de Pestañas Volumen Extremo",
+      "brand": "",
+      "cat": "maquillaje",
+      "price": 13000,
+      "discount": 20,
+      "branches": [
+        "farmavida",
+        "libertad",
+        "central"
+      ],
+      "image": "",
+      "featured": false,
+      "inStock": true,
+      "active": true,
+      "art": "tube",
+      "color": "#2f3b37"
+    },
+    {
+      "id": "p13",
+      "name": "Protector Solar Corporal Spray FPS 30 200 ml",
+      "brand": "",
+      "cat": "sol-y-agua",
+      "price": 30700,
+      "discount": 30,
+      "branches": [
+        "farmavida",
+        "libertad",
+        "central"
+      ],
+      "image": "",
+      "featured": false,
+      "inStock": true,
+      "active": true,
+      "art": "bottle",
+      "color": "#f2c14e"
+    },
+    {
+      "id": "p14",
+      "name": "After Sun Gel Aloe Vera Refrescante 250 ml",
+      "brand": "",
+      "cat": "sol-y-agua",
+      "price": 13200,
+      "discount": 25,
+      "branches": [
+        "farmavida",
+        "central"
+      ],
+      "image": "",
+      "featured": false,
+      "inStock": true,
+      "active": true,
+      "art": "tube",
+      "color": "#7cc576"
+    },
+    {
+      "id": "p15",
+      "name": "Creatina Monohidrato 300 g",
+      "brand": "ENA",
+      "cat": "gym",
+      "price": 32900,
+      "discount": 10,
+      "branches": [
+        "farmavida",
+        "central"
+      ],
+      "image": "",
+      "featured": false,
+      "inStock": true,
+      "active": true,
+      "art": "jar",
+      "color": "#2f3b37"
+    },
+    {
+      "id": "p16",
+      "name": "BCAA 2:1:1 · 120 cápsulas",
+      "brand": "Hoch Sport",
+      "cat": "gym",
+      "price": 21900,
+      "discount": 10,
+      "branches": [
+        "libertad",
+        "farmavida"
+      ],
+      "image": "",
+      "featured": false,
+      "inStock": true,
+      "active": true,
+      "art": "jar",
+      "color": "#e2685c"
+    },
+    {
+      "id": "p17",
+      "name": "Citrato de Magnesio + B6 · 60 comprimidos",
+      "brand": "",
+      "cat": "gym",
+      "price": 12250,
+      "discount": 20,
+      "branches": [
+        "farmavida",
+        "libertad",
+        "central"
+      ],
+      "image": "",
+      "featured": false,
+      "inStock": true,
+      "active": true,
+      "art": "jar",
+      "color": "#72bd99"
+    },
+    {
+      "id": "p18",
+      "name": "Colágeno Hidrolizado + Vitamina C · 30 sobres",
+      "brand": "",
+      "cat": "gym",
+      "price": 33100,
+      "discount": 20,
+      "branches": [
+        "farmavida",
+        "libertad",
+        "central"
+      ],
+      "image": "",
+      "featured": false,
+      "inStock": true,
+      "active": true,
+      "art": "box",
+      "color": "#f0a35e"
+    },
+    {
+      "id": "p19",
+      "name": "Leche Infantil Etapa 3 · 800 g",
+      "brand": "",
+      "cat": "bebes",
+      "price": 24500,
+      "discount": 0,
+      "branches": [
+        "farmavida",
+        "libertad",
+        "central"
+      ],
+      "image": "",
+      "featured": false,
+      "inStock": true,
+      "active": true,
+      "art": "jar",
+      "color": "#9fd3f0"
+    },
+    {
+      "id": "p20",
+      "name": "Toallitas Húmedas Hipoalergénicas x 80",
+      "brand": "",
+      "cat": "bebes",
+      "price": 4900,
+      "discount": 20,
+      "branches": [
+        "farmavida",
+        "libertad",
+        "central"
+      ],
+      "image": "",
+      "featured": false,
+      "inStock": true,
+      "active": true,
+      "art": "box",
+      "color": "#b9e2c9"
+    },
+    {
+      "id": "p21",
+      "name": "Aros de Acero Quirúrgico Bañados en Oro",
+      "brand": "",
+      "cat": "joyas",
+      "price": 15900,
+      "discount": 20,
+      "branches": [
+        "farmavida",
+        "libertad",
+        "central"
+      ],
+      "image": "",
+      "featured": false,
+      "inStock": true,
+      "active": true,
+      "art": "ring",
+      "color": "#d4af6a"
+    },
+    {
+      "id": "p22",
+      "name": "Pulsera Tejida con Dije",
+      "brand": "",
+      "cat": "joyas",
+      "price": 9900,
+      "discount": 0,
+      "branches": [
+        "farmavida",
+        "libertad",
+        "central"
+      ],
+      "image": "",
+      "featured": false,
+      "inStock": true,
+      "active": true,
+      "art": "ring",
+      "color": "#c9a0dc"
+    },
+    {
+      "id": "p23",
+      "name": "Muñeca Articulada con Accesorios",
+      "brand": "",
+      "cat": "juguetes",
+      "price": 32500,
+      "discount": 10,
+      "branches": [
+        "farmavida"
+      ],
+      "image": "",
+      "featured": false,
+      "inStock": true,
+      "active": true,
+      "art": "toy",
+      "color": "#e79bb0"
+    },
+    {
+      "id": "p24",
+      "name": "Short Deportivo Dry-Fit Mujer",
+      "brand": "",
+      "cat": "indumentaria",
+      "price": 18900,
+      "discount": 20,
+      "branches": [
+        "farmavida",
+        "central"
+      ],
+      "image": "",
+      "featured": false,
+      "inStock": true,
+      "active": true,
+      "art": "shorts",
+      "color": "#3bb49c"
+    },
+    {
+      "id": "p25",
+      "name": "Remera Deportiva Dry-Fit",
+      "brand": "",
+      "cat": "indumentaria",
+      "price": 19900,
+      "discount": 20,
+      "branches": [
+        "farmavida",
+        "central"
+      ],
+      "image": "",
+      "featured": false,
+      "inStock": true,
+      "active": true,
+      "art": "tee",
+      "color": "#72bd99"
+    },
+    {
+      "id": "p26",
+      "name": "Set de Regalo Body Splash + Crema de Manos",
+      "brand": "",
+      "cat": "regalos",
+      "price": 22000,
+      "discount": 20,
+      "branches": [
+        "farmavida",
+        "libertad",
+        "central"
+      ],
+      "image": "",
+      "featured": false,
+      "inStock": true,
+      "active": true,
+      "art": "box",
+      "color": "#e79bb0"
+    },
+    {
+      "id": "p27",
+      "name": "Cartera Neceser Matelassé con Cierre",
+      "brand": "",
+      "cat": "carteras",
+      "price": 31100,
+      "discount": 20,
+      "branches": [
+        "farmavida",
+        "central"
+      ],
+      "image": "",
+      "featured": false,
+      "inStock": true,
+      "active": true,
+      "art": "bag",
+      "color": "#1e2925"
+    }
+  ]
+}

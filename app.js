@@ -172,11 +172,24 @@ function setBranch(id, { silent = true, scroll = false } = {}) {
 const tb = $('.topbar__track');
 tb.innerHTML += tb.innerHTML;
 $$('span', tb).slice(3).forEach(s => s.setAttribute('aria-hidden', 'true'));
+// Tocar la barra pausa / reanuda el desplazamiento (en escritorio se pausa con el mouse encima).
+$('.topbar').addEventListener('click', () => $('.topbar').classList.toggle('is-paused'));
 
 /* ---------------- Header ---------------- */
 
+// Compacta el header al bajar. Histéresis (entra >20px, sale <4px) para que no titile en el límite.
 const header = $('#header');
-addEventListener('scroll', () => header.classList.toggle('is-scrolled', scrollY > 8), { passive: true });
+let headerTicking = false;
+addEventListener('scroll', () => {
+  if (headerTicking) return;
+  headerTicking = true;
+  requestAnimationFrame(() => {
+    const y = scrollY;
+    if (y > 20) header.classList.add('is-scrolled');
+    else if (y < 4) header.classList.remove('is-scrolled');
+    headerTicking = false;
+  });
+}, { passive: true });
 
 const searchInput = $('#searchInput');
 const setPlaceholder = () => {
@@ -390,7 +403,7 @@ function productCard(p, n) {
   const off = p.discount > 0;
   const where = !state.branch && p.branches.length < BRANCHES.length ? `<span class="product__where">Solo en ${esc(branchNames(p.branches))}</span>` : '';
   return `
-    <article class="product ${p.inStock ? '' : 'is-out'}" id="p-${esc(p.id)}" style="animation-delay:${Math.min(n, 12) * 40}ms">
+    <article class="product ${p.inStock ? '' : 'is-out'}" id="p-${esc(p.id)}" style="--i:${Math.min(n, 16)}">
       <div class="product__media">
         ${off ? `<span class="product__off">-${p.discount}% OFF</span>` : ''}
         ${p.featured ? '<span class="product__tag">Destacado</span>' : ''}
@@ -424,11 +437,11 @@ $('#products').addEventListener('click', e => {
     window.open(waLink(b.phone, `Hola ${b.name}! 👋 ¿Cuándo vuelve a ingresar "${p.name}"${p.brand ? ` (${p.brand})` : ''}?`), '_blank', 'noopener');
     return;
   }
-  if (!add) return;
+  if (!add || add.classList.contains('is-added')) return;
   addToCart(add.dataset.add);
   add.classList.add('is-added');
-  add.innerHTML = `${icon(ICONS.check)}Agregado`;
-  setTimeout(() => { add.classList.remove('is-added'); add.innerHTML = `${icon(ICONS.bag)}Consultar / Comprar`; }, 1400);
+  add.innerHTML = '✓ Agregado';
+  setTimeout(() => { add.classList.remove('is-added'); add.innerHTML = `${icon(ICONS.bag)}Consultar / Comprar`; }, 900);
 });
 
 /* ---------------- Buscador predictivo ---------------- */
@@ -526,7 +539,8 @@ function addToCart(id) {
   state.cart[id] = (state.cart[id] || 0) + 1;
   saveCart();
   toast(`Agregado a tu pedido · ${productById(id).name.split(' ').slice(0, 3).join(' ')}…`);
-  const c = $('#cartCount'); c.classList.remove('bump'); void c.offsetWidth; c.classList.add('bump');
+  // Rebote del carrito (se reinicia la animación aunque se agreguen varios seguidos).
+  for (const el of [$('#cartCount'), $('#cartBtn')]) { el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); }
 }
 function saveCart() { store.set(STORAGE.cart, state.cart); renderCart(); }
 
@@ -870,6 +884,33 @@ $$('.fcol__toggle').forEach(btn => btn.addEventListener('click', () => {
   $$('.fcol__toggle').forEach(b => b.setAttribute('aria-expanded', b === btn && open));
   $$('.fcol').forEach(c => c.classList.toggle('is-open', c.contains(btn) && open));
 }));
+
+/* ---------------- Aparición suave al hacer scroll ---------------- */
+
+// .reveal: el elemento entra solo una vez. .reveal-stagger: sus hijos entran en cascada.
+// Sin IntersectionObserver o con "reducir movimiento", todo se muestra de inmediato.
+(() => {
+  const singles = ['#ofertas .section__head', '#branchTabs', '.how .section__head', '#sucursales .section__head'];
+  const groups = ['.how__steps', '#branches', '.perks'];
+  const els = [...singles.map(s => [$(s), 'reveal']), ...groups.map(s => [$(s), 'reveal-stagger'])].filter(([el]) => el);
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced || !('IntersectionObserver' in window)) return;
+  const show = el => {
+    el.classList.add('is-visible');
+    // Terminada la entrada, se apaga la animación: si la sección se vuelve a dibujar
+    // (ej. sucursales cada minuto) no se repite el efecto.
+    setTimeout(() => el.classList.add('is-done'), 1600);
+  };
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) { show(e.target); io.unobserve(e.target); }
+  }), { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  for (const [el, cls] of els) {
+    // Lo que ya está en pantalla al cargar no se oculta.
+    if (el.getBoundingClientRect().top < innerHeight * 0.92) continue;
+    el.classList.add(cls);
+    io.observe(el);
+  }
+})();
 
 /* ---------------- Init ---------------- */
 

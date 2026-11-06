@@ -942,3 +942,216 @@ select.field { padding: 0 12px; background: #fff; }
   .admin-filters--2 { grid-template-columns: 2fr 1fr; }
 }
 .fcol__list--branches .wa-link { display: inline-flex; flex-wrap: nowrap; padding: 0; border: 0; background: none; width: auto; }
+
+/* =========================================================
+   V6 · PULIDO VISUAL PREMIUM
+   Animaciones solo con transform / opacity (60 fps en celulares).
+   Todo respeta prefers-reduced-motion (bloque final).
+   ========================================================= */
+
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-ios-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  /* Sombras multicapa con tinte botánico (nunca negro puro) */
+  --shadow-sm: 0 2px 6px -1px rgba(18, 43, 33, 0.04), 0 1px 2px -1px rgba(18, 43, 33, 0.03);
+  --shadow-card: 0 10px 30px -10px rgba(18, 43, 33, 0.07), 0 4px 12px -2px rgba(18, 43, 33, 0.04);
+  --shadow-card-hover: 0 20px 40px -12px rgba(59, 180, 156, 0.16), 0 8px 18px -4px rgba(18, 43, 33, 0.06);
+  --shadow-1: var(--shadow-sm);
+  --shadow-2: var(--shadow-card);
+}
+
+/* ---------- 1. Tipografía ---------- */
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+h1, h2 { letter-spacing: -0.02em; }
+
+/* Palabras destacadas de títulos: texto con degradé */
+h1 em, h2 em {
+  font-style: normal;
+  background: linear-gradient(135deg, #2b9b84, #72bd99);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+/* Subrayado curvo bajo "estar cerca" y "todo el verano" */
+.slide h1 em, .slide h2 em { position: relative; display: inline-block; white-space: nowrap; padding-bottom: .06em; }
+.slide h1 em::after, .slide h2 em::after {
+  content: ""; position: absolute; left: -2%; right: -2%; bottom: -.12em; height: .3em;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M3 14 C 50 4, 120 2, 197 9' fill='none' stroke='%2372bd99' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  transform-origin: left center; animation: underlineDraw 1s var(--ease-out-expo) .35s backwards;
+}
+.slide--season h2 em {
+  text-decoration: none;
+  background: linear-gradient(135deg, #ffffff, #e2fbef);
+  -webkit-background-clip: text; background-clip: text;
+}
+.slide--season h2 em::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M3 14 C 50 4, 120 2, 197 9' fill='none' stroke='%23ffffff' stroke-opacity='.75' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+@keyframes underlineDraw { from { transform: scaleX(0); opacity: 0; } }
+
+/* ---------- 2. Top bar y header ---------- */
+.topbar { background: linear-gradient(90deg, #16241f, #1e332c); cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.topbar__track { will-change: transform; }
+.topbar:hover .topbar__track, .topbar.is-paused .topbar__track { animation-play-state: paused; }
+
+.header {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(18px) saturate(180%); -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border-bottom: 1px solid rgba(114, 189, 153, 0.18);
+  transition: box-shadow .3s var(--ease-out-expo), background .3s var(--ease-out-expo);
+}
+.header__row { transition: padding .3s var(--ease-out-expo); }
+.header.is-scrolled { box-shadow: var(--shadow-card); border-color: rgba(114, 189, 153, 0.18); background: rgba(255, 255, 255, 0.9); }
+.header.is-scrolled .header__row { padding-top: 7px; padding-bottom: 9px; }
+
+.search:focus-within input { border-color: #3bb49c; background: #fff; box-shadow: 0 0 0 4px rgba(114, 189, 153, 0.18); }
+.search:focus-within .search__icon { color: #3bb49c; }
+.search__results { box-shadow: var(--shadow-card); transform-origin: top center; animation: dropIn .32s var(--ease-out-expo); }
+@keyframes dropIn { from { opacity: 0; transform: translateY(-8px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+@media (min-width: 900px) {
+  .header.is-scrolled .header__row { padding-top: 10px; padding-bottom: 10px; }
+}
+
+/* ---------- 3. Burbujas de categorías: aro en degradé ---------- */
+.story__ring { position: relative; border: 0; padding: 3px; isolation: isolate; transition: transform .45s var(--ease-spring); }
+.story__ring::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: 50%;
+  background: linear-gradient(135deg, #72bd99, #3bb49c, #a8e0c5);
+  transition: opacity .3s ease;
+}
+.story__media { border: 2.5px solid #fff; box-shadow: none; transition: box-shadow .45s var(--ease-out-expo); }
+.story__media > .i, .story__media > img { transition: transform .45s var(--ease-spring); }
+.story.is-active .story__ring { transform: translateY(-4px) scale(1.04); box-shadow: 0 10px 22px -6px rgba(59, 180, 156, .45); border: 0; }
+.story.is-active .story__ring::before { animation: ringSpin 4s linear infinite; }
+.story.is-active .story__media > .i, .story.is-active .story__media > img { transform: scale(1.08); }
+.story__star { z-index: 2; }
+@media (hover: hover) {
+  .story:hover .story__ring { transform: translateY(-4px) scale(1.04); box-shadow: 0 10px 22px -6px rgba(59, 180, 156, .4); }
+  .story:hover .story__ring::before { animation: ringSpin 4s linear infinite; }
+  .story:hover .story__media > .i, .story:hover .story__media > img { transform: scale(1.08); }
+}
+@keyframes ringSpin { to { transform: rotate(360deg); } }
+
+/* ---------- 4. Hero premium ---------- */
+.slide--brand {
+  background:
+    radial-gradient(circle at 80% 30%, rgba(114, 189, 153, 0.22), transparent 60%),
+    radial-gradient(circle at 10% 90%, rgba(59, 180, 156, 0.08), transparent 50%),
+    linear-gradient(135deg, #f4f7f6 0%, #e9f5ef 60%, #dcf1e7 100%);
+}
+.blob { animation: pulseBlob 8s ease-in-out infinite alternate; will-change: transform, opacity; }
+.slide__art--sun .sun { animation: pulseBlob 8s ease-in-out infinite alternate; will-change: transform, opacity; }
+@keyframes pulseBlob {
+  from { transform: scale(.94) rotate(0deg); opacity: .16; }
+  to { transform: scale(1.06) rotate(8deg); opacity: .26; }
+}
+.slide__art--sun .sun { opacity: 1; }
+@keyframes pulseSun { from { transform: scale(.95); opacity: .85; } to { transform: scale(1.06); opacity: 1; } }
+.slide__art--sun .sun { animation-name: pulseSun; }
+
+/* Tarjetas de sucursal "acrílicas" flotando con desfase */
+.logo-fan figure {
+  background: rgba(255, 255, 255, .72);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, .85);
+  box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255, 255, 255, .9);
+  animation: float3D 6s ease-in-out infinite alternate, fadeIn .8s var(--ease-out-expo) backwards;
+  will-change: transform;
+  transition: translate .4s var(--ease-spring), box-shadow .4s var(--ease-out-expo);
+}
+.logo-fan figure:nth-child(1) { animation-delay: 0s, 0s; }
+.logo-fan figure:nth-child(2) { animation-delay: -2.5s, .12s; }
+.logo-fan figure:nth-child(3) { animation-delay: -5s, .24s; }
+.logo-fan figure:hover { translate: 0 -6px; box-shadow: var(--shadow-card-hover), inset 0 1px 0 rgba(255, 255, 255, .9); }
+@keyframes float3D {
+  from { transform: translateY(0) rotate(var(--r)); }
+  to { transform: translateY(-8px) rotate(calc(var(--r) * -0.4)); }
+}
+@keyframes fadeIn { from { opacity: 0; } }
+
+/* ---------- 5. Productos: tarjetas y "ola" al filtrar ---------- */
+.products .product {
+  border: 1px solid rgba(152, 155, 154, 0.16);
+  box-shadow: var(--shadow-sm);
+  transition: transform .35s var(--ease-out-expo), box-shadow .35s var(--ease-out-expo), border-color .35s ease;
+  animation: cardReveal .55s var(--ease-out-expo) backwards;
+  animation-delay: calc(var(--i, 0) * 35ms);
+}
+@keyframes cardReveal { from { opacity: 0; transform: translateY(16px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.product__media { background: #f7faf9; overflow: hidden; }
+.product__media > svg, .product__media > img { transition: transform .5s var(--ease-out-expo); }
+@media (hover: hover) {
+  .products .product:hover { transform: translateY(-6px); box-shadow: var(--shadow-card-hover); border-color: rgba(114, 189, 153, 0.45); }
+  .products .product:hover .product__media > svg, .products .product:hover .product__media > img { transform: scale(1.06); }
+}
+.product__off { background: linear-gradient(135deg, #3bb49c, #72bd99); box-shadow: 0 4px 10px rgba(59, 180, 156, 0.3); }
+.product__btn { position: relative; overflow: hidden; transition: background .25s ease, color .25s ease, transform .2s var(--ease-spring); }
+.product__btn.is-added { background: var(--teal); color: #fff; animation: addedPulse .9s var(--ease-out-expo); }
+@keyframes addedPulse { 0% { transform: scale(.96); } 35% { transform: scale(1.03); } 100% { transform: scale(1); } }
+.product__btn.is-added::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; background: rgba(255, 255, 255, .35);
+  animation: addedFlash .9s var(--ease-out-expo) forwards; pointer-events: none;
+}
+@keyframes addedFlash { from { opacity: 1; transform: scale(.6); } to { opacity: 0; transform: scale(1.4); } }
+
+/* Tarjetas institucionales y bloques con la misma sombra multicapa */
+.branch { box-shadow: var(--shadow-sm); border-color: rgba(152, 155, 154, 0.16); transition: transform .35s var(--ease-out-expo), box-shadow .35s var(--ease-out-expo); }
+@media (hover: hover) { .branch:hover { box-shadow: var(--shadow-card-hover); } }
+
+/* ---------- 6. Micro-interacciones de compra ---------- */
+/* Reflejo de luz diagonal al pasar el mouse */
+.btn--wa, .btn--primary { position: relative; overflow: hidden; isolation: isolate; }
+.btn--wa::after, .btn--primary::after {
+  content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 45%; z-index: 1; pointer-events: none;
+  background: linear-gradient(105deg, transparent 0%, rgba(255, 255, 255, .45) 50%, transparent 100%);
+  transform: translateX(-160%) skewX(-18deg); opacity: 0;
+}
+@media (hover: hover) {
+  .btn--wa:hover::after, .btn--primary:hover::after { opacity: 1; transform: translateX(320%) skewX(-18deg); transition: transform .75s var(--ease-out-expo), opacity .2s ease; }
+}
+
+/* Rebote del carrito */
+#cartBtn.bump, .cart-count.bump { animation: cartBump .4s var(--ease-spring); }
+@keyframes cartBump { 0% { transform: scale(1); } 40% { transform: scale(1.22); } 70% { transform: scale(.95); } 100% { transform: scale(1); } }
+
+/* ---------- 7. Aparición al hacer scroll ---------- */
+.reveal:not(.is-visible), .reveal-stagger:not(.is-visible) > * { opacity: 0; }
+.reveal.is-visible:not(.is-done) { animation: revealUp .8s var(--ease-out-expo) backwards; }
+.reveal-stagger.is-visible:not(.is-done) > * { animation: revealUp .8s var(--ease-out-expo) backwards; }
+.reveal-stagger.is-visible:not(.is-done) > :nth-child(2) { animation-delay: .09s; }
+.reveal-stagger.is-visible:not(.is-done) > :nth-child(3) { animation-delay: .18s; }
+.reveal-stagger.is-visible:not(.is-done) > :nth-child(4) { animation-delay: .27s; }
+@keyframes revealUp { from { opacity: 0; transform: translateY(24px); } }
+
+/* Drawers y modales con curva tipo iOS */
+.drawer, .side-menu { transition: transform .42s var(--ease-ios-drawer), visibility 0s .42s; will-change: transform; }
+.drawer.is-open, .side-menu.is-open { transition: transform .42s var(--ease-ios-drawer); }
+.side-backdrop, .drawer-backdrop { backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); animation: fade .42s var(--ease-ios-drawer); }
+.modal::backdrop { backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); }
+.modal[open] { animation: modalIn .42s var(--ease-ios-drawer); }
+@keyframes modalIn { from { opacity: 0; transform: translateY(18px) scale(.98); } }
+.wa-panel { animation: modalIn .42s var(--ease-ios-drawer); }
+
+/* Halo del botón flotante de WhatsApp */
+.wa-fab::before { animation: waPulse 2.8s var(--ease-out-expo) infinite; border-width: 2px; }
+.wa-fab::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--wa);
+  animation: waPulse 2.8s var(--ease-out-expo) 1.4s infinite; pointer-events: none;
+}
+.wa-fab[aria-expanded="true"]::after { animation: none; opacity: 0; }
+@keyframes waPulse { 0% { transform: scale(1); opacity: .5; } 100% { transform: scale(1.55); opacity: 0; } }
+.wa-fab { transition: transform .35s var(--ease-spring), background .2s; }
+
+/* ---------- Movimiento reducido: todo quieto y visible ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal:not(.is-visible), .reveal-stagger:not(.is-visible) > * { opacity: 1; }
+  .logo-fan figure, .blob, .slide__art--sun .sun, .story__ring::before, .wa-fab::before, .wa-fab::after, .topbar__track { animation: none !important; }
+  .logo-fan figure { transform: rotate(var(--r)); }
+  .btn--wa::after, .btn--primary::after { display: none; }
+}
+
+/* Celular: "Destacado" debajo del % OFF para que no se pisen en tarjetas angostas */
+@media (max-width: 599px) {
+  .product__tag { top: 42px; left: 10px; right: auto; }
+}

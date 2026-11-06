@@ -793,3 +793,152 @@ select.field { padding: 0 12px; background: #fff; }
 @media (min-width: 900px) {
   #ofertas .filters { justify-content: flex-start; max-width: none; }
 }
+
+/* =========================================================
+   V5 · PULIDO PROFESIONAL
+   ========================================================= */
+
+/* Glacial Indifference alojada en /fonts. unicode-range la limita a caracteres SIN tilde:
+   sus glifos acentuados se ven rotos en algunos celulares ("Beb´s"), así que las letras
+   con tilde/ñ (á é í ó ú ñ Ñ ü…) las dibuja Plus Jakarta Sans, que sí las tiene bien. */
+@font-face {
+  font-family: "Glacial Indifference";
+  src: url("fonts/GlacialIndifference-Regular.woff") format("woff");
+  font-weight: 400; font-style: normal; font-display: swap;
+  unicode-range: U+0000-00BF, U+00D7, U+00F7, U+2000-206F, U+20AC, U+2122;
+}
+@font-face {
+  font-family: "Glacial Indifference";
+  src: url("fonts/GlacialIndifference-Bold.woff") format("woff");
+  font-weight: 700; font-style: normal; font-display: swap;
+  unicode-range: U+0000-00BF, U+00D7, U+00F7, U+2000-206F, U+20AC, U+2122;
+}
+
+/* Logo oficial de WhatsApp (relleno) */
+.i--wa { fill: currentColor; stroke: none; }
+.topbar .i--wa { color: #25d366; }
+.btn .i--wa { width: 19px; height: 19px; }
+.wa-link { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; color: var(--ink); }
+.wa-link .i--wa { width: 17px; height: 17px; color: #1fae55; flex: none; }
+.wa-link:hover { color: #1fae55; }
+.branch__meta .i--wa { color: #1fae55; }
+.wa-panel__list .go .i--wa { width: 22px; height: 22px; }
+.field-hint { font-size: 11.5px; color: var(--gray); margin: -2px 6px 0; }
+
+/* ---------- Header: ☰ · logo · 👤 · 🛍️ ---------- */
+.account-btn { width: 44px; height: 44px; }
+.account-btn .i { width: 21px; height: 21px; }
+.account-btn__initials {
+  width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--green); color: #fff; font-size: 13px; font-weight: 700; letter-spacing: .02em;
+}
+.header__actions { gap: 6px; }
+
+/* ---------- Pestañas y opciones de sucursal: nombre + dirección chiquita ---------- */
+.branch-tab small { display: block; font-size: 11px; color: var(--gray); font-weight: 400; }
+.branch-opt__box { padding: 10px 14px; gap: 10px; }
+.branch-opt__box b { font-family: var(--f-sub); font-size: 15px; }
+.branch-opt__box small { display: block; font-size: 11px; color: var(--gray); margin-top: 1px; }
+.branch__lead { font-size: 13px; color: var(--gray); font-family: var(--f-body); margin-bottom: 2px; }
+
+/* ---------- Mi cuenta ---------- */
+.modal--account { width: min(460px, calc(100vw - 24px)); height: auto; max-height: calc(100dvh - 24px); }
+.account { overflow: auto; padding: 20px; }
+.account-form { display: grid; gap: 12px; }
+.account-intro { color: var(--ink-2); font-size: 14px; }
+.account-form .lbl small { font-weight: 400; color: var(--gray); }
+.account-form .field { height: 46px; }
+.account-legal { text-align: center; font-size: 11.5px; color: var(--gray); }
+.account-card { display: flex; align-items: center; gap: 14px; padding: 16px; border-radius: var(--r-card); background: var(--bg-alt); }
+.account-card h3 { font-size: 20px; }
+.account-card small { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--ink-2); margin-top: 2px; }
+.account-card small .i { width: 14px; height: 14px; }
+.account-card .i--wa { color: #1fae55; }
+.account-card .icon-btn { margin-left: auto; background: #fff; }
+.account-avatar { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; flex: none; background: var(--green); color: #fff; font-weight: 700; font-size: 18px; }
+.account-subtitle { font-size: 16px; margin: 20px 0 10px; }
+.order-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.order { padding: 12px 14px; border-radius: 14px; border: 1px solid var(--line); display: grid; gap: 6px; }
+.order__head { display: flex; justify-content: space-between; gap: 10px; font-size: 14px; }
+.order__head span { color: var(--gray); font-size: 12.5px; }
+.order > small { color: var(--ink-2); font-size: 12.5px; line-height: 1.4; }
+.order__foot { display: flex; align-items: center; gap: 10px; }
+.order__foot span { font-size: 12px; color: var(--gray); }
+.order__foot .btn { margin-left: auto; }
+.account-empty { color: var(--ink-2); font-size: 14px; padding: 14px; border-radius: 14px; background: var(--bg-alt); }
+.account-logout { margin-top: 18px; }
+
+/* ---------- Footer: pestañas desplegables en celular, columnas en escritorio ---------- */
+.footer__cols { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; min-width: 0; }
+.fcol { display: contents; }
+.fcol__toggle {
+  grid-row: 1; display: flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 11px 6px; border-radius: 12px; background: #fff; border: 1.5px solid var(--line);
+  font-family: var(--f-sub); font-weight: 700; font-size: 14px; color: var(--ink); transition: all .2s var(--ease);
+}
+.fcol__toggle span { transition: transform .25s var(--ease); font-size: 12px; }
+.fcol__toggle[aria-expanded="true"] { border-color: var(--green); background: var(--green-50); color: var(--teal-700); }
+.fcol__toggle[aria-expanded="true"] span { transform: rotate(180deg); }
+.fcol__panel { grid-row: 2; grid-column: 1 / -1; display: none; }
+.fcol.is-open .fcol__panel { display: block; animation: pop .22s var(--ease); }
+.fcol__title { display: none; }
+.fcol__list { list-style: none; margin: 4px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.fcol__list > li > a, .fcol__list > li > button {
+  display: block; width: 100%; padding: 10px 12px; border-radius: 12px; background: #fff; border: 1px solid var(--line);
+  font-size: 13px; line-height: 1.25; text-align: left;
+}
+.fcol__list--branches > li { padding: 10px 12px; border-radius: 12px; background: #fff; border: 1px solid var(--line); }
+.footer__branch { display: grid; gap: 3px; min-width: 0; }
+.footer__branch .wa-link { flex-wrap: wrap; word-break: break-word; }
+.footer__grid > * { min-width: 0; }
+.footer__branch small { font-size: 11px; color: var(--gray); }
+.footer__branch .wa-link { font-size: 13px; }
+.footer__grid { grid-template-columns: 1fr; }
+
+@media (min-width: 900px) {
+  .footer__grid { grid-template-columns: 1.3fr 2.7fr; }
+  .footer__cols { grid-column: auto; grid-template-columns: 1.3fr 1.1fr 1fr; gap: 32px; }
+  .fcol { display: block; }
+  .fcol__toggle { display: none; }
+  .fcol__panel { display: block; }
+  .fcol__title { display: block; }
+  .fcol__list { grid-template-columns: 1fr; gap: 10px; margin: 0; }
+  .fcol__list > li > a, .fcol__list > li > button { padding: 0; background: none; border: 0; font-size: 14px; }
+  .fcol__list--branches > li { padding: 0; background: none; border: 0; }
+}
+
+/* =========================================================
+   admin.html (página independiente)
+   ========================================================= */
+.admin-page { background: var(--bg-alt); min-height: 100dvh; }
+.admin--page { overflow: visible; max-width: 1100px; margin: 0 auto; padding: 18px 16px 120px; background: none; }
+.admin-top {
+  position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding: 10px 16px; background: rgba(255,255,255,.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+}
+.admin-top__logo { height: 30px; width: auto; }
+.admin-scope { display: flex; align-items: center; gap: 8px; padding: 6px 14px 6px 10px; border-radius: var(--r-pill); background: var(--green-50); color: var(--teal-700); }
+.admin-scope b { display: block; font-size: 13.5px; line-height: 1.1; color: var(--ink); }
+.admin-scope small { font-size: 11px; color: var(--gray); }
+.admin-top__actions { margin-left: auto; display: flex; gap: 8px; }
+
+.admin-login { max-width: 400px; margin: 6vh auto 0; display: grid; gap: 14px; padding: 28px 22px; border-radius: 24px; background: #fff; box-shadow: var(--shadow-2); text-align: center; }
+.admin-login__logo { width: 150px; margin: 0 auto 4px; }
+.admin-login h1 { font-size: 30px; }
+.admin-login p { color: var(--ink-2); font-size: 14px; margin-top: -6px; }
+.admin-login__opts { display: grid; gap: 8px; text-align: left; }
+.admin-login__back { font-size: 13px; color: var(--gray); }
+.admin-login__back:hover { color: var(--teal-700); }
+
+.admin-tabs { display: flex; gap: 6px; padding: 4px; margin-bottom: 12px; border-radius: var(--r-pill); background: #fff; border: 1px solid var(--line); width: fit-content; max-width: 100%; overflow-x: auto; }
+.admin-tabs button { padding: 8px 16px; border-radius: var(--r-pill); font-size: 13.5px; font-weight: 700; color: var(--ink-2); white-space: nowrap; }
+.admin-tabs button[aria-selected="true"] { background: var(--ink); color: #fff; }
+.admin-note { padding: 12px 14px; border-radius: 12px; background: #fff8e8; border: 1px solid #f3e2b5; font-size: 13.5px; margin-bottom: 14px; }
+.admin-own { color: #9a6a06; font-style: normal; font-size: 11.5px; }
+.admin-count { font-size: 12.5px; color: var(--gray); margin: 0 0 8px; }
+.admin-form .field:disabled { background: var(--bg-alt); color: var(--ink-2); }
+.admin--page .admin-form__foot { bottom: 0; margin: 16px -16px 0; position: sticky; }
+@media (min-width: 600px) {
+  .admin-filters--2 { grid-template-columns: 2fr 1fr; }
+}
+.fcol__list--branches .wa-link { display: inline-flex; flex-wrap: nowrap; padding: 0; border: 0; background: none; width: auto; }
